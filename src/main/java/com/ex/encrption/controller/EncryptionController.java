@@ -20,14 +20,12 @@ public class EncryptionController {
 
 	@GetMapping("encrypt")
 	public String encrypt(@RequestParam String encrypt) {
-		System.out.println("*********** " + encrypt + " "+encryptionService.encrypt(encrypt));
-		String result =encryptionService.encrypt(encrypt);
-		
-		//lets decrpt the
-		
-		String decrypt=encryptionService.decrypt(result);
-		System.out.println("******decrypt "+decrypt);
-		// done
+		System.out.println("*********** " + encrypt + " " + encryptionService.encrypt(encrypt));
+		String result = encryptionService.encrypt(encrypt);
+
+		String decrypt = encryptionService.decrypt(result);
+		System.out.println("******decrypt " + decrypt);
+
 		return result;
 	}
 
@@ -36,12 +34,14 @@ public class EncryptionController {
 
 		return encryptionService.decrypt(decrypt);
 	}
+
 	@PostMapping("token")
 	public String token(@RequestBody Token token) {
 		return encryptionService.encode(token);
 	}
+
 	@GetMapping("decodeToken")
-	public Token decodeToken(@RequestParam String decodeToken ) {
+	public Token decodeToken(@RequestParam String decodeToken) {
 		return encryptionService.decode(decodeToken);
 	}
 }
